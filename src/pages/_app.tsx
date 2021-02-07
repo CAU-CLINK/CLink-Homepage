@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { createGlobalStyle } from 'styled-components'
 import 'sanitize.css'
 import 'antd/dist/antd.css'
+import 'src/components/NoShadow.css'
 
 const GlobalStyle = createGlobalStyle`
   html,

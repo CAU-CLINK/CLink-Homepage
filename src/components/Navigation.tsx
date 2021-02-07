@@ -5,7 +5,7 @@ import { Drawer } from 'antd'
 import 'antd/dist/antd.css'
 
 const Nav = styled.nav`
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 200px;
@@ -13,8 +13,8 @@ const Nav = styled.nav`
 `
 
 const NavIcon = styled.div`
-  z-index: 2;
-  position: absolute;
+  z-index: 3;
+  position: fixed;
   top: 0;
   right: 10px;
 `
