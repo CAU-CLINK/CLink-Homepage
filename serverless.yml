@@ -1,2 +1,24 @@
-slsNextApp: 
-component: '@sls-next/serverless-component@1.18.0'
+# serverless-prod.yml
+name: clink-homepage
+service: new-service
+provider: aws
+
+clink-homepage:
+  --component: serverless-next.js@latest
+  inputs:
+    bucketName: clink-homepage-s3
+    description: clink-homepage-serverless-deploy
+    name:
+      defaultLambda: clink-homepage-lambda
+      apiLambda: clink-hoempage-lambda
+    domain: ['clink-homepage', 'cauclink.com']
+    runtime:
+      defaultLambda: 'nodejs12.x'
+      apiLambda: 'nodejs12.x'
+    custom: 
+      customDomain:
+        domainName: hello.cauclink.com
+        basePath: ""
+        certificateName: "*.cauclink.com"
+        createRoute53Record: true
+    
