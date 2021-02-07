@@ -1,9 +1,9 @@
 # serverless-prod.yml
-name: clink-homepage
+name: CI
 service: new-service
 provider: aws
 
-clink-homepage:
+CI:
   --component: "@sls-next/serverless-component@1.18.0"
   inputs:
     bucketName: clink-homepage-s3
