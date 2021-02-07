@@ -24,27 +24,30 @@ const SNS = styled.div`
 `
 
 const Facebook = styled.div`
-  width: 8.5rem;
-  min-width: 8rem;
-  height: 7em;
+  width: min(8rem, 20vw);
+  height: min(7rem, 15vw);
   border: 0.5rem solid #1877f2;
-  padding: 0 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const Medium = styled.div`
-  width: 8.5rem;
-  height: 7em;
+  width: min(8rem, 20vw);
+  height: min(7rem, 15vw);
   border: 0.5rem solid black;
-  padding: 0 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const SNSName = styled.span`
-  font-size: 2rem;
+  font-size: min(1.5rem, 3vw);
   font-weight: 500;
 `
 
 const SNSLink = styled.a`
-  font-size: min(1.5rem, 3vw);
+  font-size: min(3rem, 3vw);
   color: inherit;
 `
 
@@ -93,17 +96,15 @@ type FormData = {
   email: string
   message: string
 }
-
+// email-js 키값
 const serviceId = 'service_oozorde'
 const templateId = 'template_spwgo7a'
 const userId = 'user_aO4pNuNPo40o3QURHDcSD'
 
 function ContactPage() {
-  // email-js 키값
   const { register, handleSubmit, errors } = useForm<FormData>()
 
   const handleSubmitForm = handleSubmit((data: FormData, r: any) => {
-    message.success('이메일 전송 완료')
     emailjs
       .send(
         serviceId,
@@ -112,12 +113,13 @@ function ContactPage() {
         userId
       )
       .then((res) => {
+        message.success('이메일 전송 완료')
+        r.target.reset()
         return console.log(res)
       })
       .catch((error) => {
         return console.log(error)
       })
-    r.target.reset()
   })
 
   return (
