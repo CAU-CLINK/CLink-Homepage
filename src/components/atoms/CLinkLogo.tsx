@@ -1,10 +1,6 @@
 import Link from 'next/link'
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Props = {}
-
-// eslint-disable-next-line no-empty-pattern
-function CLinkLogo({}: Props) {
+function CLinkLogo() {
   return (
     <Link href="/">
       <a href="/">
