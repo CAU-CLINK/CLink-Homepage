@@ -1,8 +1,13 @@
+import GradientBorder from 'src/components/atoms/GradientBorder'
 import ImageBox from 'src/components/atoms/ImageBox'
+import InternationalizedLink from 'src/components/InternationalizedLink'
 import PageLayout from 'src/components/layouts/PageLayout'
 import ProjectContentBox from 'src/components/atoms/ProjectContentBox'
 import PageTitle from 'src/components/layouts/PageTitle'
 import styled from 'styled-components'
+import MainLogo from 'src/components/MainLogo'
+
+import People from 'src/components/people'
 
 const Title = styled.h2`
   margin: 1rem 0;
@@ -91,29 +96,38 @@ const Container = styled.div`
 
 function HomePage() {
   return (
-    <PageTitle title="C-Link">
+    <PageTitle title="중앙대학교 블록체인 학회 C-Link">
       <PageLayout>
+        <InternationalizedLink />
+        <MainLogo></MainLogo>
+
         <Container>
           {Projects.map((project) => (
             <ProjectContentBox project={project} key={project.id}></ProjectContentBox>
           ))}
         </Container>
         <ImageBox>
-          <img
-            src="https://media.vlpt.us/images/gwak2837/profile/fe9e991c-0c0c-44b2-8027-af0c6e29f4ba/filename2.jpg?w=120"
-            alt="imaeg"
-          />
+          <GradientBorder borderSize="1rem">
+            <img
+              src="https://media.vlpt.us/images/gwak2837/profile/fe9e991c-0c0c-44b2-8027-af0c6e29f4ba/filename2.jpg?w=120"
+              alt="imaeg"
+            />
+          </GradientBorder>
           <Title>[2ND WORKSHOP, 2019]</Title>
           {ExampleParagraph}
         </ImageBox>
         <ImageBox rightImage>
-          <img
-            src="https://media.vlpt.us/images/gwak2837/profile/fe9e991c-0c0c-44b2-8027-af0c6e29f4ba/filename2.jpg?w=120"
-            alt="imaeg"
-          />
+          <GradientBorder borderSize="1rem">
+            <img
+              src="https://media.vlpt.us/images/gwak2837/profile/fe9e991c-0c0c-44b2-8027-af0c6e29f4ba/filename2.jpg?w=120"
+              alt="imaeg"
+            />
+          </GradientBorder>
           <Title>[2ND WORKSHOP, 2019]</Title>
           {ExampleParagraph}
         </ImageBox>
+
+        <People />
       </PageLayout>
     </PageTitle>
   )

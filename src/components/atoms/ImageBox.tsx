@@ -24,6 +24,11 @@ type Props = {
   rightImage?: boolean
 }
 
+/**
+ * @param children [0] Image
+ * @param children [1] Title
+ * @param children [2] Description
+ */
 function ImageBox({ children, rightImage = false }: Props) {
   return (
     <FlexContainer rightImage={rightImage}>

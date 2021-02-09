@@ -27,7 +27,7 @@ type Props = {
   src: string
 }
 
-function ImageIconCircle({ alt, src }: Props) {
+function ImageCircle({ alt, src }: Props) {
   return (
     <ImageWrapper>
       <Image alt={alt} src={src} />
@@ -35,4 +35,4 @@ function ImageIconCircle({ alt, src }: Props) {
   )
 }
 
-export default memo(ImageIconCircle)
+export default memo(ImageCircle)
