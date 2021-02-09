@@ -5,27 +5,10 @@ import PageLayout from 'src/components/layouts/PageLayout'
 import ProjectContentBox from 'src/components/atoms/ProjectContentBox'
 import PageTitle from 'src/components/layouts/PageTitle'
 import styled from 'styled-components'
+import MainLogo from 'src/components/MainLogo'
 
 import People from 'src/components/people'
 
-const Title = styled.h1`
-  text-align: center;
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-`
-
-const StyledA = styled.a`
-  color: #0070f3;
-  text-decoration: none;
-
-  :hover,
-  :focus,
-  :active {
-    text-decoration: underline;
-  }
-`
-        
 const Title = styled.h2`
   margin: 1rem 0;
 `
@@ -115,49 +98,9 @@ function HomePage() {
   return (
     <PageTitle title="중앙대학교 블록체인 학회 C-Link">
       <PageLayout>
-        <Title>
-          Welcome to <StyledA href="https://www.facebook.com/CAUCLink/">C-Link!</StyledA>
-        </Title>
-
-        <Description>
-          Get started by editing <code>src/pages/index.tsx</code>
-        </Description>
-
-        <Button onClick={handleClickTestButton} type="primary">
-          Test Button
-        </Button>
-
-        <GridContainer>
-          <Link href="/about">
-            <a href="/about">
-              <h3>About &rarr;</h3>
-              <p>C-Link를 소개하는 페이지</p>
-            </a>
-          </Link>
-
-          <Link href="/contact">
-            <a href="/contact">
-              <h3>Contact &rarr;</h3>
-              <p>C-Link 연락처가 있는 페이지</p>
-            </a>
-          </Link>
-
-          <Link href="/posts">
-            <a href="/posts">
-              <h3>Posts &rarr;</h3>
-              <p>C-Link 학회원들이 작성한 글의 링크가 있는 페이지</p>
-            </a>
-          </Link>
-
-          <Link href="/projects">
-            <a href="projects">
-              <h3>Projects &rarr;</h3>
-              <p>C-Link에서 진행했던, 진행 중인, 진행할 프로젝트를 소개하는 페이지</p>
-            </a>
-          </Link>
-        </GridContainer>
-        <People />
         <InternationalizedLink />
+        <MainLogo></MainLogo>
+
         <Container>
           {Projects.map((project) => (
             <ProjectContentBox project={project} key={project.id}></ProjectContentBox>
@@ -183,6 +126,8 @@ function HomePage() {
           <Title>[2ND WORKSHOP, 2019]</Title>
           {ExampleParagraph}
         </ImageBox>
+
+        <People />
       </PageLayout>
     </PageTitle>
   )
