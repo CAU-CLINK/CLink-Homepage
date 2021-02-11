@@ -6,7 +6,6 @@ import ProjectContentBox from 'src/components/atoms/ProjectContentBox'
 import PageTitle from 'src/components/layouts/PageTitle'
 import styled from 'styled-components'
 import MainLogo from 'src/components/MainLogo'
-
 import People from 'src/components/people'
 
 const Title = styled.h2`
@@ -96,7 +95,7 @@ const Container = styled.div`
 
 function HomePage() {
   return (
-    <PageTitle title="중앙대학교 블록체인 학회 C-Link">
+    <PageTitle title="중앙대학교 블록체인 학회 C-Link - Home">
       <PageLayout>
         <InternationalizedLink />
         <MainLogo></MainLogo>

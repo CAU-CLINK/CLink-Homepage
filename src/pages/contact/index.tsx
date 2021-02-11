@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import emailjs from 'emailjs-com'
 import { useForm } from 'react-hook-form'
 import { message, Alert } from 'antd'
+import { BaseSyntheticEvent } from 'react'
 
 const Wrapper = styled.div`
   display: flex;
@@ -96,34 +97,25 @@ type FormData = {
   email: string
   message: string
 }
-// email-js 키값
-const serviceId = 'service_oozorde'
-const templateId = 'template_spwgo7a'
-const userId = 'user_aO4pNuNPo40o3QURHDcSD'
 
 function ContactPage() {
   const { register, handleSubmit, errors } = useForm<FormData>()
 
-  const handleSubmitForm = handleSubmit((data: FormData, r: any) => {
-    emailjs
-      .send(
-        serviceId,
-        templateId,
-        { name: data.name, email: data.email, message: data.message },
-        userId
-      )
-      .then((res) => {
-        message.success('이메일 전송 완료')
-        r.target.reset()
-        return console.log(res)
-      })
-      .catch((error) => {
-        return console.log(error)
-      })
-  })
+  async function onSubmit(data: FormData, e?: BaseSyntheticEvent) {
+    const response = await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '',
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? '',
+      { name: data.name, email: data.email, message: data.message },
+      process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+    )
+
+    message.success('이메일 전송 완료')
+    e?.target.reset()
+    console.log(response)
+  }
 
   return (
-    <PageTitle title="C-Link Contact">
+    <PageTitle title="중앙대학교 블록체인 학회 C-Link - Contact">
       <PageLayout>
         <PageHeader>Contacts</PageHeader>
         <Wrapper>
@@ -149,7 +141,7 @@ function ContactPage() {
               <SNSLink href="https://medium.com/caulink">medium.com/caulink</SNSLink>
             </SNS>
 
-            <Form onSubmit={handleSubmitForm}>
+            <Form onSubmit={handleSubmit(onSubmit)}>
               <Input
                 type="text"
                 placeholder="name"
