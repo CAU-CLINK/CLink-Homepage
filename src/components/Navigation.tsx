@@ -1,5 +1,6 @@
 import { Drawer } from 'antd'
 import Hamburger from 'hamburger-react'
+import Link from 'next/link'
 import styled from 'styled-components'
 import useBoolean from 'src/hooks/useBoolean'
 
@@ -35,18 +36,26 @@ function Navigation() {
         visible={isDrawerOpen}
       >
         <Padding>
-          <StyledA href="/about">
-            <p>ABOUT</p>
-          </StyledA>
-          <StyledA href="/projects">
-            <p>PROJECTS</p>
-          </StyledA>
-          <StyledA href="/members">
-            <p>MEMBERS</p>
-          </StyledA>
-          <StyledA href="/contact">
-            <p>CONTACT</p>
-          </StyledA>
+          <Link href="/about">
+            <StyledA href="/about">
+              <p>ABOUT</p>
+            </StyledA>
+          </Link>
+          <Link href="/projects">
+            <StyledA href="/projects">
+              <p>PROJECTS</p>
+            </StyledA>
+          </Link>
+          <Link href="/members">
+            <StyledA href="/members">
+              <p>MEMBERS</p>
+            </StyledA>
+          </Link>
+          <Link href="/contact">
+            <StyledA href="/contact">
+              <p>CONTACT</p>
+            </StyledA>
+          </Link>
         </Padding>
       </Drawer>
     </StyledNavigation>
