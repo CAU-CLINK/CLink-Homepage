@@ -1,10 +1,16 @@
 import { Drawer } from 'antd'
 import Hamburger from 'hamburger-react'
-import styled, { CSSProperties } from 'styled-components'
+import styled from 'styled-components'
 import useBoolean from 'src/hooks/useBoolean'
 
 const StyledNavigation = styled.nav`
   margin: 1rem;
+`
+
+const Padding = styled.div`
+  height: min-content;
+  padding: 5rem 0 0 0;
+  text-align: right;
 `
 
 const StyledA = styled.a`
@@ -13,14 +19,7 @@ const StyledA = styled.a`
   font-family: Poppins;
   font-size: 20px;
   line-height: 20px;
-  :hover,
-  :focus,
-  :active {
-    color: gray;
-  }
 `
-
-const DrawerStyle: CSSProperties = { marginTop: 50, textAlign: 'right' }
 
 function Navigation() {
   const [isDrawerOpen, , showDrawer, hideDrawer] = useBoolean(false)
@@ -30,23 +29,25 @@ function Navigation() {
       <Hamburger toggled={isDrawerOpen} toggle={showDrawer} />
       <Drawer
         closeIcon={<Hamburger toggled={isDrawerOpen} />}
-        drawerStyle={DrawerStyle}
+        mask={false}
         onClose={hideDrawer}
         placement="right"
         visible={isDrawerOpen}
       >
-        <StyledA href="/about">
-          <p>ABOUT</p>
-        </StyledA>
-        <StyledA href="/projects">
-          <p>PROJECTS</p>
-        </StyledA>
-        <StyledA href="/members">
-          <p>MEMBERS</p>
-        </StyledA>
-        <StyledA href="/contact">
-          <p>CONTACT</p>
-        </StyledA>
+        <Padding>
+          <StyledA href="/about">
+            <p>ABOUT</p>
+          </StyledA>
+          <StyledA href="/projects">
+            <p>PROJECTS</p>
+          </StyledA>
+          <StyledA href="/members">
+            <p>MEMBERS</p>
+          </StyledA>
+          <StyledA href="/contact">
+            <p>CONTACT</p>
+          </StyledA>
+        </Padding>
       </Drawer>
     </StyledNavigation>
   )

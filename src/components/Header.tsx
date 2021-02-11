@@ -9,8 +9,9 @@ const FixedHeader = styled.header`
   height: ${HEADER_HEIGHT};
   position: fixed;
   top: 0;
+  z-index: 1;
 
-  background-color: #eee;
+  background-color: #fff;
 `
 
 const FlexContainer1 = styled.div`
