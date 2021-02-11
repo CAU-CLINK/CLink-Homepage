@@ -5,7 +5,7 @@ import ProjectContentBox from 'src/components/atoms/ProjectContentBox'
 import PageTitle from 'src/components/layouts/PageTitle'
 import styled from 'styled-components'
 import HeroImage from 'src/components/HeroImage'
-import People from 'src/components/people'
+import Members from 'src/components/Members'
 import { HEADER_HEIGHT } from 'src/models/constants'
 
 const Title = styled.h2`
@@ -87,27 +87,38 @@ const Projects: Information[] = [
   },
 ]
 
-const Container = styled.div`
+const GridContainer = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   justify-items: center;
+  gap: 5rem;
 `
 
-const Padding = styled.div`
-  padding: ${HEADER_HEIGHT} 1rem 0;
+const FlexContainer = styled.div`
+  padding: ${HEADER_HEIGHT} 1rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10rem;
 `
 
 function HomePage() {
   return (
     <PageTitle title="중앙대학교 블록체인 학회 C-Link - Home">
       <PageLayout>
-        <Padding>
+        <FlexContainer>
           <HeroImage />
-          <Container>
+
+          <GridContainer>
             {Projects.map((project) => (
               <ProjectContentBox project={project} key={project.id}></ProjectContentBox>
             ))}
-          </Container>
+          </GridContainer>
+
           <ImageBox>
             <GradientBorder borderSize="1rem">
               <img
@@ -129,8 +140,8 @@ function HomePage() {
             {ExampleParagraph}
           </ImageBox>
 
-          <People />
-        </Padding>
+          <Members />
+        </FlexContainer>
       </PageLayout>
     </PageTitle>
   )
