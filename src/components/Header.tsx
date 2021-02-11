@@ -1,25 +1,52 @@
-import CLinkLogo from './atoms/CLinkLogo'
-import Navigation from './Navigation'
+import { HEADER_HEIGHT } from 'src/models/constants'
 import styled from 'styled-components'
+import CLinkLogo from './atoms/CLinkLogo'
+import InternationalizedLink from './InternationalizedLink'
+import Navigation from './Navigation'
 
-const Wrapper = styled.header`
+const FixedHeader = styled.header`
+  width: 100%;
+  height: ${HEADER_HEIGHT};
   position: fixed;
   top: 0;
-  bottom: 0;
-  right: 0;
+
+  background-color: #eee;
 `
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Props = {}
+const FlexContainer1 = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 
-// eslint-disable-next-line no-empty-pattern
-function Header({}: Props) {
+const FlexContainer2 = styled.div`
+  min-width: 100px;
+  max-width: calc(${HEADER_HEIGHT} * 2.2 - 1rem);
+  padding: 0.5rem;
+
+  display: flex;
+  align-items: center;
+`
+
+const FlexContainer3 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+function Header() {
   return (
-    <header style={{ position: 'fixed', zIndex: 1, margin: '10px' }}>
-      <CLinkLogo />
-
-      <Navigation />
-    </header>
+    <FixedHeader>
+      <FlexContainer1>
+        <FlexContainer2>
+          <CLinkLogo />
+        </FlexContainer2>
+        <FlexContainer3>
+          <InternationalizedLink />
+          <Navigation />
+        </FlexContainer3>
+      </FlexContainer1>
+    </FixedHeader>
   )
 }
 

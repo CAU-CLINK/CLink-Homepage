@@ -1,30 +1,10 @@
-import styled from 'styled-components'
-import Hamburger from 'hamburger-react'
-import { useState } from 'react'
 import { Drawer } from 'antd'
-import 'antd/dist/antd.css'
+import Hamburger from 'hamburger-react'
+import styled, { CSSProperties } from 'styled-components'
+import useBoolean from 'src/hooks/useBoolean'
 
-const Nav = styled.nav`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 200px;
-  height: 100vh;
-`
-
-const NavIcon = styled.div`
-  z-index: 3;
-  position: fixed;
-  top: 0;
-  right: 10px;
-`
-
-const NavList = styled.div`
-  z-index: 0;
-  width: 200px;
-  height: '100vh';
-  right: 0;
-  top: 0;
+const StyledNavigation = styled.nav`
+  margin: 1rem;
 `
 
 const StyledA = styled.a`
@@ -40,61 +20,35 @@ const StyledA = styled.a`
   }
 `
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Props = {}
+const DrawerStyle: CSSProperties = { marginTop: 50, textAlign: 'right' }
 
-// eslint-disable-next-line no-empty-pattern
-function Navigation({}: Props) {
-  const [visible, setVisible] = useState(false)
-
-  const showDrawer = () => {
-    setVisible(true)
-  }
-
-  const onClose = () => {
-    setVisible(false)
-  }
+function Navigation() {
+  const [isDrawerOpen, , showDrawer, hideDrawer] = useBoolean(false)
 
   return (
-    <Nav>
-      <NavList>
-        <NavIcon>
-          <Hamburger
-            onToggle={(toggled) => {
-              if (toggled) {
-                showDrawer()
-              } else {
-                onClose()
-              }
-            }}
-          />
-        </NavIcon>
-        <Drawer
-          placement="top"
-          closable={false}
-          onClose={onClose}
-          visible={visible}
-          getContainer={false}
-          mask={false}
-          height="100%"
-          drawerStyle={{ marginTop: 50, textAlign: 'right' }}
-          style={{ position: 'absolute', right: 0, width: 200, zIndex: 1 }}
-        >
-          <StyledA href="/about">
-            <p>ABOUT</p>
-          </StyledA>
-          <StyledA href="/projects">
-            <p>PROJECTS</p>
-          </StyledA>
-          <StyledA href="/team">
-            <p>MEMBERS</p>
-          </StyledA>
-          <StyledA href="/contact">
-            <p>CONTACTS</p>
-          </StyledA>
-        </Drawer>
-      </NavList>
-    </Nav>
+    <StyledNavigation>
+      <Hamburger toggled={isDrawerOpen} toggle={showDrawer} />
+      <Drawer
+        closeIcon={<Hamburger toggled={isDrawerOpen} />}
+        drawerStyle={DrawerStyle}
+        onClose={hideDrawer}
+        placement="right"
+        visible={isDrawerOpen}
+      >
+        <StyledA href="/about">
+          <p>ABOUT</p>
+        </StyledA>
+        <StyledA href="/projects">
+          <p>PROJECTS</p>
+        </StyledA>
+        <StyledA href="/members">
+          <p>MEMBERS</p>
+        </StyledA>
+        <StyledA href="/contact">
+          <p>CONTACT</p>
+        </StyledA>
+      </Drawer>
+    </StyledNavigation>
   )
 }
 
