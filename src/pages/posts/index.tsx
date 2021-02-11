@@ -3,7 +3,7 @@ import PageTitle from 'src/components/layouts/PageTitle'
 
 function PostsPage() {
   return (
-    <PageTitle title="C-Link Posts">
+    <PageTitle title="중앙대학교 블록체인 학회 C-Link - Posts">
       <PageLayout>
         <div>Posts page</div>
       </PageLayout>

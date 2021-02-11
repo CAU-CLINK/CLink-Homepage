@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import PageLayout from 'src/components/layouts/PageLayout'
 import PageTitle from 'src/components/layouts/PageTitle'
+import { HEADER_HEIGHT } from 'src/models/constants'
 import styled from 'styled-components'
-import Link from 'next/link'
 
 const data = [
   {
@@ -144,6 +145,10 @@ const data = [
   },
 ]
 
+const Padding = styled.div`
+  padding: ${HEADER_HEIGHT} 0 0 0;
+`
+
 const MemberDiv = styled.div`
   text-align: center;
 `
@@ -257,10 +262,11 @@ const HistoryContents = styled.h6`
   font-size: 12px;
 `
 
-function TeamPage() {
+function MemberPage() {
   return (
-    <PageTitle title="C-Link Team">
+    <PageTitle title="중앙대학교 블록체인 학회 C-Link - Members">
       <PageLayout>
+        <Padding />
         <MemberDiv>
           <MemberText>MEMBERS</MemberText>
         </MemberDiv>
@@ -328,4 +334,4 @@ function TeamPage() {
   )
 }
 
-export default TeamPage
+export default MemberPage
