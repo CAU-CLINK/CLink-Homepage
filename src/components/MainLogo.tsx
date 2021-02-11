@@ -36,11 +36,7 @@ const Text = styled.p`
   white-space: nowrap;
 `
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Props = {}
-
-// eslint-disable-next-line no-empty-pattern
-function MainLogo({}: Props) {
+function MainLogo() {
   return (
     <>
       <Group1>

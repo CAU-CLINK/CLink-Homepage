@@ -1,11 +1,11 @@
 import { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { useEffect } from 'react'
+import { pageview } from 'src/utils/google-analytics'
 import { createGlobalStyle } from 'styled-components'
 import 'sanitize.css'
 import 'antd/dist/antd.css'
-import { useRouter } from 'next/dist/client/router'
-import { useEffect } from 'react'
-import { pageview } from 'src/utils/google-analytics'
 
 const GlobalStyle = createGlobalStyle`
   html,
