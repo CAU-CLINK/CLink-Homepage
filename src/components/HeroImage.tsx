@@ -1,13 +1,17 @@
 import styled from 'styled-components'
 
 const RelativePosition = styled.div`
-  padding: 1rem;
+  height: 100vh;
   position: relative;
-  z-index: 1;
 `
 
 const Clink = styled.h1`
   margin: 0;
+  padding: min(5.25vw, 3.5rem) 0 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   font: bold min(30vw, 20rem) / 1 Poppins;
   text-align: center;
@@ -17,7 +21,7 @@ const Clink = styled.h1`
 const Text = styled.p`
   margin: 0;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 

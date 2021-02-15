@@ -3,10 +3,10 @@ import ImageBox from 'src/components/atoms/ImageBox'
 import PageLayout from 'src/components/layouts/PageLayout'
 import ProjectContentBox from 'src/components/atoms/ProjectContentBox'
 import PageTitle from 'src/components/layouts/PageTitle'
-import styled from 'styled-components'
 import HeroImage from 'src/components/HeroImage'
 import Members from 'src/components/Members'
-import { HEADER_HEIGHT } from 'src/models/constants'
+import { DESKTOP_MIN_WIDTH } from 'src/models/constants'
+import styled from 'styled-components'
 
 const Title = styled.h2`
   margin: 1rem 0;
@@ -89,7 +89,7 @@ const Projects: Information[] = [
 
 const GridContainer = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: ${DESKTOP_MIN_WIDTH};
   margin: 0 auto;
 
   display: grid;
@@ -99,7 +99,7 @@ const GridContainer = styled.div`
 `
 
 const FlexContainer = styled.div`
-  padding: ${HEADER_HEIGHT} 1rem;
+  padding: 0 1rem;
 
   display: flex;
   flex-flow: column nowrap;
