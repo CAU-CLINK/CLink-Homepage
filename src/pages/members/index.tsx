@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import { Fragment } from 'react'
 import PageLayout from 'src/components/layouts/PageLayout'
 import PageTitle from 'src/components/layouts/PageTitle'
-import { HEADER_HEIGHT } from 'src/models/constants'
+import { DESKTOP_MIN_WIDTH, HEADER_HEIGHT } from 'src/models/constants'
 import styled from 'styled-components'
 
-const data = [
+const members = [
   {
     id: 0,
     name: 'JAMES',
@@ -17,16 +18,28 @@ const data = [
       facebook: 'https://www.facebook.com/CAUCLink',
       instagram: 'https://www.instagram.com',
     },
-    history: {
-      '2012 - 2014': ['학생', '학생', '학생'],
-      '2017 - 현재': [
-        '법무법인 창천 파트너 변호사',
-        '메트라이프 생명보험 보험설계사',
-        '삼성생명 전문 강사',
-        '런인베스트먼트 전임 강사',
-      ],
-      '2014 - 2015': ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
-    },
+    histories: [
+      {
+        id: 0,
+        period: '2012 - 2014',
+        contents: ['학생', '학생', '학생'],
+      },
+      {
+        id: 1,
+        period: '2014 - 2015',
+        contents: ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
+      },
+      {
+        id: 2,
+        period: '2017 - 현재',
+        contents: [
+          '법무법인 창천 파트너 변호사',
+          '메트라이프 생명보험 보험설계사',
+          '삼성생명 전문 강사',
+          '런인베스트먼트 전임 강사',
+        ],
+      },
+    ],
   },
   {
     id: 1,
@@ -40,16 +53,28 @@ const data = [
       facebook: 'https://www.facebook.com/CAUCLink',
       instagram: '',
     },
-    history: {
-      '2018 - 현재': ['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'b'],
-      '2017 - 현재': [
-        '법무법인 창천 파트너 변호사',
-        '메트라이프 생명보험 보험설계사',
-        '삼성생명 전문 강사',
-        '런인베스트먼트 전임 강사',
-      ],
-      '2014 - 2015': ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
-    },
+    histories: [
+      {
+        id: 0,
+        period: '2012 - 2014',
+        contents: ['학생', '학생', '학생'],
+      },
+      {
+        id: 1,
+        period: '2014 - 2015',
+        contents: ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
+      },
+      {
+        id: 2,
+        period: '2017 - 현재',
+        contents: [
+          '법무법인 창천 파트너 변호사',
+          '메트라이프 생명보험 보험설계사',
+          '삼성생명 전문 강사',
+          '런인베스트먼트 전임 강사',
+        ],
+      },
+    ],
   },
   {
     id: 2,
@@ -63,19 +88,28 @@ const data = [
       facebook: 'https://www.facebook.com/CAUCLink',
       instagram: 'https://www.instagram.com',
     },
-    history: {
-      '2017 - 현재': [
-        '법무법인 창천 파트너 변호사',
-        '메트라이프 생명보험 보험설계사',
-        '삼성생명 전문 강사',
-        '런인베스트먼트 전임 강사',
-      ],
-      '2014 - 2015': ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
-      '2018 - 현재': [
-        '저는 중앙대학교를 다니는 학생입니다. 저는 중앙대학교를 다니는 학생입니다. 저는 중앙대학교를 다니는 학생입니다. 저는 중앙대학교를 다니는 학생입니다. ',
-        'a',
-      ],
-    },
+    histories: [
+      {
+        id: 0,
+        period: '2012 - 2014',
+        contents: ['학생', '학생', '학생'],
+      },
+      {
+        id: 1,
+        period: '2014 - 2015',
+        contents: ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
+      },
+      {
+        id: 2,
+        period: '2017 - 현재',
+        contents: [
+          '법무법인 창천 파트너 변호사',
+          '메트라이프 생명보험 보험설계사',
+          '삼성생명 전문 강사',
+          '런인베스트먼트 전임 강사',
+        ],
+      },
+    ],
   },
   {
     id: 3,
@@ -89,15 +123,28 @@ const data = [
       facebook: '',
       instagram: 'https://www.instagram.com',
     },
-    history: {
-      '2017 - 현재': [
-        '법무법인 창천 파트너 변호사',
-        '메트라이프 생명보험 보험설계사',
-        '삼성생명 전문 강사',
-        '런인베스트먼트 전임 강사',
-      ],
-      '2014 - 2015': ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
-    },
+    histories: [
+      {
+        id: 0,
+        period: '2012 - 2014',
+        contents: ['학생', '학생', '학생'],
+      },
+      {
+        id: 1,
+        period: '2014 - 2015',
+        contents: ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
+      },
+      {
+        id: 2,
+        period: '2017 - 현재',
+        contents: [
+          '법무법인 창천 파트너 변호사',
+          '메트라이프 생명보험 보험설계사',
+          '삼성생명 전문 강사',
+          '런인베스트먼트 전임 강사',
+        ],
+      },
+    ],
   },
   {
     id: 4,
@@ -111,15 +158,28 @@ const data = [
       facebook: '',
       instagram: '',
     },
-    history: {
-      '2017 - 현재': [
-        '법무법인 창천 파트너 변호사',
-        '메트라이프 생명보험 보험설계사',
-        '삼성생명 전문 강사',
-        '런인베스트먼트 전임 강사',
-      ],
-      '2014 - 2015': ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
-    },
+    histories: [
+      {
+        id: 0,
+        period: '2012 - 2014',
+        contents: ['학생', '학생', '학생'],
+      },
+      {
+        id: 1,
+        period: '2014 - 2015',
+        contents: ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
+      },
+      {
+        id: 2,
+        period: '2017 - 현재',
+        contents: [
+          '법무법인 창천 파트너 변호사',
+          '메트라이프 생명보험 보험설계사',
+          '삼성생명 전문 강사',
+          '런인베스트먼트 전임 강사',
+        ],
+      },
+    ],
   },
   {
     id: 5,
@@ -133,202 +193,177 @@ const data = [
       facebook: 'https://www.facebook.com/CAUCLink',
       instagram: '',
     },
-    history: {
-      '2017 - 현재': [
-        '법무법인 창천 파트너 변호사',
-        '메트라이프 생명보험 보험설계사',
-        '삼성생명 전문 강사',
-        '런인베스트먼트 전임 강사',
-      ],
-      '2014 - 2015': ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
-    },
+    histories: [
+      {
+        id: 0,
+        period: '2012 - 2014',
+        contents: ['학생', '학생', '학생'],
+      },
+      {
+        id: 1,
+        period: '2014 - 2015',
+        contents: ['법무법인(유한) JP [舊 정평] 변호사', 'a'],
+      },
+      {
+        id: 2,
+        period: '2017 - 현재',
+        contents: [
+          '법무법인 창천 파트너 변호사',
+          '메트라이프 생명보험 보험설계사',
+          '삼성생명 전문 강사',
+          '런인베스트먼트 전임 강사',
+        ],
+      },
+    ],
   },
 ]
 
-const Padding = styled.div`
-  padding: ${HEADER_HEIGHT} 0 0 0;
-`
-
-const MemberDiv = styled.div`
+const CenterAlignedH1 = styled.h1`
+  margin: ${HEADER_HEIGHT} 0 0;
+  padding: 5rem 0;
+  font: bold min(15vw, 10rem) Poppins;
   text-align: center;
 `
 
-const MemberText = styled.h1`
-  font-size: 13vw;
-  font-family: poppin;
-  font-weight: 800;
-`
-
-const FlexContainer = styled.div`
-  margin: 0px auto;
+const FlexContainerWrap = styled.div`
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
-
-  flex-wrap: wrap;
   align-items: center;
-  max-width: 1400px;
-  margin-top: 3rem;
-  @media (max-width: 700px) {
-    width: 100%;
-    flex-direction: column;
-  }
+
+  margin: 0 auto;
+  max-width: ${DESKTOP_MIN_WIDTH};
 `
 
-const CardContainer = styled.div`
+const MemberCard = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: center;
-  width: 700px;
-  margin-bottom: 60px;
+  align-items: center;
+  gap: 1rem;
+
+  margin: min(3vw, 2rem);
 `
 
-const SuperContainer = styled.div`
-  width: 230px;
-  height: 280px;
+const RelativePosition = styled.div`
+  width: 300px;
+  height: 300px;
+  padding: 2.5rem;
   text-align: center;
+  position: relative;
+
   background-color: rgba(80, 33, 40, 0.17);
 `
-const ImageContainer = styled.div`
-  margin: 0px auto;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-`
 
-const Image = styled.img`
+const StyledImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  vertical-align: middle;
 `
 
-const NameContainer = styled.div`
-  width: 100%;
-  height: 40px;
-`
+const AbsolutePositionH4 = styled.h4`
+  margin: 0.5rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
 
-const Name = styled.h3`
   text-decoration: underline;
-  font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  font-family: Poppins;
 `
-const HideScrollbar = styled.div`
-  width: 400px;
-  height: 300px;
-  overflow: hidden;
-`
-const InfoContainer = styled.div`
+
+const FlexContainerColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 280px;
-  margin: 0 40px;
-  overflow: auto;
+  gap: 1rem;
+
+  width: 300px;
+  height: 300px;
 `
 
-const FlatformContainer = styled.div`
-  margin: 10px 0px;
-  padding-left: 10px;
+const FlexContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 25px;
-`
-const IconContainer = styled.img`
-  margin-right: 10px;
-  width: 25px;
-  height: 25px;
+  gap: 0.5rem;
 `
 
-const StyledA = styled.a`
-  cursor: pointer;
+const IconImage = styled.img`
+  width: 2rem;
+  height: 2rem;
 `
 
 const HistoryContainer = styled.div`
   width: 96%;
   height: 100%;
+  overflow: auto;
 `
 
-const HistoryTitle = styled.h4`
-  font-weight: 800;
-  font-family: poppin;
-  font-size: 18px;
+const HistoryPeriod = styled.h3`
+  margin: 0.5rem 0;
+  font: bold Poppin;
 `
 
-const HistoryContents = styled.h6`
-  margin: 0px 10px;
-  font-weight: 600;
+const HistoryContents = styled.h5`
+  margin: 0 0.5rem;
   font-family: poppin;
-  font-size: 12px;
 `
 
 function MemberPage() {
   return (
     <PageTitle title="중앙대학교 블록체인 학회 C-Link - Members">
       <PageLayout>
-        <Padding />
-        <MemberDiv>
-          <MemberText>MEMBERS</MemberText>
-        </MemberDiv>
-        <FlexContainer>
-          {data.map((person) => (
-            <CardContainer key={person.id}>
-              <SuperContainer>
-                <NameContainer />
-                <ImageContainer>
-                  <Image src={person.image} />
-                </ImageContainer>
-                <NameContainer>
-                  <Name>{person.name}</Name>
-                </NameContainer>
-              </SuperContainer>
-              <HideScrollbar>
-                <InfoContainer>
-                  <FlatformContainer>
-                    {Object.entries(person.address)
-                      .filter((item) => item[1] !== '')
-                      .map((item) => item[0])
-                      .map((flatform) =>
-                        flatform === 'facebook' ? (
-                          <Link href={person.address.facebook} key={person.address.facebook}>
-                            <StyledA href={person.address.facebook} target="_blank">
-                              <IconContainer src="./Facebook.png" />
-                            </StyledA>
-                          </Link>
-                        ) : flatform === 'github' ? (
-                          <Link href={person.address.github} key={person.address.github}>
-                            <StyledA href={person.address.github} target="_blank">
-                              <IconContainer src="./Github.png" />
-                            </StyledA>
-                          </Link>
-                        ) : (
-                          <Link href={person.address.instagram} key={person.address.instagram}>
-                            <StyledA href={person.address.instagram} target="_blank">
-                              <IconContainer src="./Instagram.png" />
-                            </StyledA>
-                          </Link>
-                        )
-                      )}
-                  </FlatformContainer>
-                  <HistoryContainer>
-                    {Object.entries(person.history)
-                      .sort((a, b) => (a[0] > b[0] ? -1 : 1))
-                      .map((item) => (
-                        <HistoryTitle key={person.id + '\\' + item[0]}>
-                          <HistoryTitle>{item[0]}</HistoryTitle>
-                          {item[1]!.map((content) => (
-                            <HistoryContents key={person.id + '\\' + content}>
-                              {content}
-                            </HistoryContents>
-                          ))}
-                        </HistoryTitle>
-                      ))}
-                  </HistoryContainer>
-                </InfoContainer>
-              </HideScrollbar>
-            </CardContainer>
+        <CenterAlignedH1>MEMBERS</CenterAlignedH1>
+        <FlexContainerWrap>
+          {members.map((person) => (
+            <MemberCard key={person.id}>
+              <RelativePosition>
+                <StyledImage src={person.image} alt="profile image" />
+                <AbsolutePositionH4>{person.name}</AbsolutePositionH4>
+              </RelativePosition>
+
+              <FlexContainerColumn>
+                <FlexContainer>
+                  {Object.entries(person.address)
+                    .filter((item) => item[1] !== '')
+                    .map((item) => item[0])
+                    .map((flatform) =>
+                      flatform === 'facebook' ? (
+                        <Link href={person.address.facebook} key={person.address.facebook}>
+                          <a href={person.address.facebook} target="_blank" rel="noreferrer">
+                            <IconImage src="./Facebook.png" />
+                          </a>
+                        </Link>
+                      ) : flatform === 'github' ? (
+                        <Link href={person.address.github} key={person.address.github}>
+                          <a href={person.address.github} target="_blank" rel="noreferrer">
+                            <IconImage src="./Github.png" />
+                          </a>
+                        </Link>
+                      ) : (
+                        <Link href={person.address.instagram} key={person.address.instagram}>
+                          <a href={person.address.instagram} target="_blank" rel="noreferrer">
+                            <IconImage src="./Instagram.png" />
+                          </a>
+                        </Link>
+                      )
+                    )}
+                </FlexContainer>
+                <HistoryContainer>
+                  {person.histories
+                    .sort((a, b) => (a.period > b.period ? -1 : 1))
+                    .map((history) => (
+                      <Fragment key={history.id}>
+                        <HistoryPeriod>{history.period}</HistoryPeriod>
+                        {history.contents.map((content, index) => (
+                          <HistoryContents key={index}>{content}</HistoryContents>
+                        ))}
+                      </Fragment>
+                    ))}
+                </HistoryContainer>
+              </FlexContainerColumn>
+            </MemberCard>
           ))}
-        </FlexContainer>
+        </FlexContainerWrap>
       </PageLayout>
     </PageTitle>
   )
