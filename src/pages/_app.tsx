@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import { pageview } from 'src/utils/google-analytics'
 import { createGlobalStyle } from 'styled-components'
-import 'sanitize.css'
+import 'normalize.css'
 import 'antd/dist/antd.css'
 
 const GlobalStyle = createGlobalStyle`
