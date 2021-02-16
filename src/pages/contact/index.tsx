@@ -1,20 +1,18 @@
-import PageHeader from 'src/components/atoms/PageHeader'
+import { SendOutlined } from '@ant-design/icons'
+import { message, Alert, Input, Button } from 'antd'
+import emailjs from 'emailjs-com'
 import PageLayout from 'src/components/layouts/PageLayout'
 import PageTitle from 'src/components/layouts/PageTitle'
 import styled from 'styled-components'
-import emailjs from 'emailjs-com'
-import { useForm } from 'react-hook-form'
-import { message, Alert } from 'antd'
-import { BaseSyntheticEvent } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { BaseSyntheticEvent, useState } from 'react'
+import { MOBILE_MIN_WIDTH, TABLET_MIN_WIDTH } from 'src/models/constants'
+import { CenterAlignedH1 } from '../members'
 
-const Wrapper = styled.div`
+const FlexContainerColumn = styled.div`
   display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
-`
-const Container = styled.main`
-  display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
+  align-items: center;
   gap: 3rem;
 `
 
@@ -53,73 +51,75 @@ const SNSLink = styled.a`
 `
 
 const Form = styled.form`
-  margin-top: 3rem;
   display: flex;
-  flex-direction: column;
-  padding: 2rem;
+  flex-flow: column nowrap;
+  gap: 2rem;
+
+  width: 90%;
+  max-width: ${TABLET_MIN_WIDTH};
+  padding: 1rem;
+  margin: 1rem;
   border: 0.5rem solid black;
-  margin-bottom: 5rem;
 `
 
-const Input = styled.input`
-  border: none;
-  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.3);
-  outline-style: none;
-  padding: 0.5em;
-  margin-bottom: 1.3rem;
+const FlexContainerGap = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
 `
-const Textarea = styled.textarea`
-  border: none;
-  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.3);
-  outline-style: none;
-  padding: 0.5em;
-  margin-bottom: 0.5rem;
-`
-const ButtonDiv = styled.div`
+
+const FlexContainerJustifyCenter = styled.div`
   display: flex;
   justify-content: center;
 `
 
-const Button = styled.input`
-  margin-top: 2rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+const StyledButton = styled(Button)`
+  width: max(50%, ${MOBILE_MIN_WIDTH});
+
+  font-weight: bold;
   border: none;
-  background-color: black;
-  color: white;
-  padding: 0.6rem 0;
-  width: 40%;
-  cursor: pointer;
+  color: #fff !important;
+  background: black !important;
+
+  :hover {
+    color: #fff !important;
+    background: #444 !important;
+  }
 `
 
 type FormData = {
   name: string
   email: string
-  message: string
+  content: string
 }
 
 function ContactPage() {
-  const { register, handleSubmit, errors } = useForm<FormData>()
+  const [isSendingEmail, setIsSendingEmail] = useState(false)
+  const { control, errors, handleSubmit } = useForm<FormData>({
+    defaultValues: { name: '', email: '', content: '' },
+  })
 
   async function onSubmit(data: FormData, e?: BaseSyntheticEvent) {
-    const response = await emailjs.send(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '',
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? '',
-      { name: data.name, email: data.email, message: data.message },
-      process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-    )
+    setIsSendingEmail(true)
+    // const response = await emailjs.send(
+    //   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '',
+    //   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? '',
+    //   { name: data.name, email: data.email, content: data.content },
+    //   process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+    // )
+    setIsSendingEmail(false)
 
     message.success('이메일 전송 완료')
     e?.target.reset()
-    console.log(response)
+    // console.log(response)
   }
 
   return (
     <PageTitle title="중앙대학교 블록체인 학회 C-Link - Contact">
       <PageLayout>
-        <PageHeader>Contacts</PageHeader>
-        <Wrapper>
-          <Container>
+        <CenterAlignedH1>Contacts</CenterAlignedH1>
+        <FlexContainerColumn>
+          <div>
             <SNS>
               <Facebook>
                 <SNSName>
@@ -140,31 +140,69 @@ function ContactPage() {
               </Medium>
               <SNSLink href="https://medium.com/caulink">medium.com/caulink</SNSLink>
             </SNS>
+          </div>
 
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <Input
-                type="text"
-                placeholder="name"
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <FlexContainerGap>
+              <label htmlFor="name">이름</label>
+              <Controller
+                control={control}
                 name="name"
-                ref={register({ required: true })}
+                render={(p) => <Input placeholder="Please input your name" type="text" {...p} />}
+                rules={{ required: '자신의 이름을 입력해주세요.' }}
               />
+              {errors.name && <Alert message={errors.name.message} type="warning" showIcon />}
+            </FlexContainerGap>
 
-              <Input
-                type="text"
-                placeholder="Email"
+            <FlexContainerGap>
+              <label htmlFor="email">이메일 주소</label>
+              <Controller
+                control={control}
                 name="email"
-                ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+                render={(p) => (
+                  <Input placeholder="Please input your email address" type="email" {...p} />
+                )}
+                rules={{
+                  required: '자신의 이메일 주소를 입력해주세요.',
+                  pattern: {
+                    message: '이메일 주소를 형식에 맞게 입력해주세요.',
+                    value: /\S+@\S+\.\S+/,
+                  },
+                }}
               />
-              <Textarea placeholder="message" name="message" ref={register({ required: true })} />
-              {(errors.email || errors.message || errors.name) && (
-                <Alert message="모든 칸을 입력해주세요." type="error" showIcon />
-              )}
-              <ButtonDiv>
-                <Button type="submit" value="SEND" />
-              </ButtonDiv>
-            </Form>
-          </Container>
-        </Wrapper>
+              {errors.email && <Alert message={errors.email.message} type="warning" showIcon />}
+            </FlexContainerGap>
+
+            <FlexContainerGap>
+              <label htmlFor="content">내용</label>
+              <Controller
+                control={control}
+                name="content"
+                render={(p) => (
+                  <Input.TextArea
+                    autoSize={{ minRows: 10 }}
+                    placeholder="Please input email content"
+                    {...p}
+                  />
+                )}
+                rules={{ required: '이메일 내용을 입력해주세요.' }}
+              />
+              {errors.content && <Alert message={errors.content.message} type="warning" showIcon />}
+            </FlexContainerGap>
+
+            <FlexContainerJustifyCenter>
+              <StyledButton
+                htmlType="submit"
+                icon={<SendOutlined />}
+                loading={isSendingEmail}
+                size="large"
+                type="primary"
+              >
+                SEND
+              </StyledButton>
+            </FlexContainerJustifyCenter>
+          </Form>
+        </FlexContainerColumn>
       </PageLayout>
     </PageTitle>
   )
