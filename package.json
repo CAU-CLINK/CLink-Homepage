@@ -16,7 +16,7 @@
     "format": "prettier . --write --ignore-path .gitignore",
     "lint": "eslint . --fix --ignore-path .gitignore",
     "type": "tsc --pretty",
-    "pre-push": "prettier . --ignore-path .gitignore && eslint . --ignore-path .gitignore && yarn type",
+    "pre-push": "yarn format && yarn lint && yarn type",
     "test": "jest"
   },
   "dependencies": {
