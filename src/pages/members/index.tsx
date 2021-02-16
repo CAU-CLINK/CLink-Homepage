@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Fragment } from 'react'
 import PageLayout from 'src/components/layouts/PageLayout'
 import PageTitle from 'src/components/layouts/PageTitle'
-import { DESKTOP_MIN_WIDTH, HEADER_HEIGHT } from 'src/models/constants'
+import { HEADER_HEIGHT } from 'src/models/constants'
 import styled from 'styled-components'
 
 const members = [
@@ -218,10 +218,12 @@ const members = [
   },
 ]
 
-const CenterAlignedH1 = styled.h1`
-  margin: ${HEADER_HEIGHT} 0 0;
+export const CenterAlignedH1 = styled.h1`
+  height: 50vh;
+  margin: ${HEADER_HEIGHT} auto 0;
   padding: 5rem 0;
-  font: bold min(15vw, 10rem) Poppins;
+
+  font: bold min(20vmin, 10rem) Poppins;
   text-align: center;
 `
 
@@ -232,7 +234,6 @@ const FlexContainerWrap = styled.div`
   align-items: center;
 
   margin: 0 auto;
-  max-width: ${DESKTOP_MIN_WIDTH};
 `
 
 const MemberCard = styled.div`
