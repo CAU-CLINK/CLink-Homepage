@@ -13,7 +13,7 @@ const Title = styled.h2`
 `
 
 const ExampleParagraph = (
-  <p>
+  <div>
     <div>"Lorem ipsum dolor sit amet,</div>
     <div>
       consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -29,7 +29,7 @@ const ExampleParagraph = (
     </div>
     <div>Excepteur sint occaecat cupidatat non proident,</div>
     <div>sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
-  </p>
+  </div>
 )
 
 interface Information {
