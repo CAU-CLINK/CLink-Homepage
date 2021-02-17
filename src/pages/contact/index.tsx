@@ -95,11 +95,11 @@ type FormData = {
 
 function ContactPage() {
   const [isSendingEmail, setIsSendingEmail] = useState(false)
-  const { control, errors, handleSubmit } = useForm<FormData>({
+  const { control, errors, handleSubmit, setValue } = useForm<FormData>({
     defaultValues: { name: '', email: '', content: '' },
   })
 
-  async function onSubmit(data: FormData, e?: BaseSyntheticEvent) {
+  async function onSubmit(data: FormData) {
     setIsSendingEmail(true)
     const response = await emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '',
@@ -110,7 +110,8 @@ function ContactPage() {
     setIsSendingEmail(false)
 
     message.success('이메일 전송 완료')
-    e?.target.reset()
+    setValue('name', '')
+    setValue('email', '')
     console.log(response)
   }
 
@@ -150,6 +151,7 @@ function ContactPage() {
                 name="name"
                 render={(p) => (
                   <Input
+                    allowClear={true}
                     disabled={isSendingEmail}
                     placeholder="Please input your name"
                     type="text"
@@ -168,6 +170,7 @@ function ContactPage() {
                 name="email"
                 render={(p) => (
                   <Input
+                    allowClear={true}
                     disabled={isSendingEmail}
                     placeholder="Please input your email address"
                     type="email"
