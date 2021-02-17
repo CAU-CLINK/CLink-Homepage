@@ -117,7 +117,7 @@ function ContactPage() {
   return (
     <PageTitle title="중앙대학교 블록체인 학회 C-Link - Contact">
       <PageLayout>
-        <CenterAlignedH1>Contacts</CenterAlignedH1>
+        <CenterAlignedH1>CONTACT</CenterAlignedH1>
         <FlexContainerColumn>
           <FlexContainerGap>
             <SNS>
