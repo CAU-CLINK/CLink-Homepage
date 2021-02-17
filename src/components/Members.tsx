@@ -158,9 +158,7 @@ function Members() {
     <BigContainer>
       <MoreText>
         <Link href="/members">
-          <a href="/members">
-            <More>MORE &rarr;</More>
-          </a>
+          <More href="/members">MORE &rarr;</More>
         </Link>
       </MoreText>
       <GridContainer>

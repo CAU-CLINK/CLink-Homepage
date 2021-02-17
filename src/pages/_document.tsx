@@ -33,7 +33,7 @@ export default class CLinkDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="apple-touch-icon" href="/vercel.svg" />
+          <link rel="apple-touch-icon" href="/favicon.ico" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black" />
           {process.env.NODE_ENV === 'production' && (
