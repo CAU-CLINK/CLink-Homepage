@@ -1,4 +1,4 @@
-import { HEADER_HEIGHT } from 'src/models/constants'
+import { DESKTOP_MIN_WIDTH, HEADER_HEIGHT } from 'src/models/constants'
 import styled from 'styled-components'
 import CLinkLogo from './atoms/CLinkLogo'
 import InternationalizedLink from './InternationalizedLink'
@@ -12,6 +12,10 @@ const FixedHeader = styled.header`
   z-index: 1;
 
   background-color: #fff;
+
+  @media (min-width: ${DESKTOP_MIN_WIDTH}) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 `
 
 const FlexContainer1 = styled.div`
