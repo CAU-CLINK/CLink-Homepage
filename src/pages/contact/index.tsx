@@ -101,17 +101,17 @@ function ContactPage() {
 
   async function onSubmit(data: FormData, e?: BaseSyntheticEvent) {
     setIsSendingEmail(true)
-    // const response = await emailjs.send(
-    //   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '',
-    //   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? '',
-    //   { name: data.name, email: data.email, content: data.content },
-    //   process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-    // )
+    const response = await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '',
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? '',
+      { name: data.name, email: data.email, content: data.content },
+      process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+    )
     setIsSendingEmail(false)
 
     message.success('이메일 전송 완료')
     e?.target.reset()
-    // console.log(response)
+    console.log(response)
   }
 
   return (
@@ -119,7 +119,7 @@ function ContactPage() {
       <PageLayout>
         <CenterAlignedH1>Contacts</CenterAlignedH1>
         <FlexContainerColumn>
-          <div>
+          <FlexContainerGap>
             <SNS>
               <Facebook>
                 <SNSName>
@@ -140,7 +140,7 @@ function ContactPage() {
               </Medium>
               <SNSLink href="https://medium.com/caulink">medium.com/caulink</SNSLink>
             </SNS>
-          </div>
+          </FlexContainerGap>
 
           <Form onSubmit={handleSubmit(onSubmit)}>
             <FlexContainerGap>
@@ -155,7 +155,7 @@ function ContactPage() {
             </FlexContainerGap>
 
             <FlexContainerGap>
-              <label htmlFor="email">이메일 주소</label>
+              <label htmlFor="email">이메일</label>
               <Controller
                 control={control}
                 name="email"
