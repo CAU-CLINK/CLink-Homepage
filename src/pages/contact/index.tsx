@@ -198,7 +198,7 @@ function ContactPage() {
                 size="large"
                 type="primary"
               >
-                SEND
+                SEND EMAIL
               </StyledButton>
             </FlexContainerJustifyCenter>
           </Form>
