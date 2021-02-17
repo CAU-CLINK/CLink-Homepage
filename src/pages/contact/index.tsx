@@ -148,7 +148,14 @@ function ContactPage() {
               <Controller
                 control={control}
                 name="name"
-                render={(p) => <Input placeholder="Please input your name" type="text" {...p} />}
+                render={(p) => (
+                  <Input
+                    disabled={isSendingEmail}
+                    placeholder="Please input your name"
+                    type="text"
+                    {...p}
+                  />
+                )}
                 rules={{ required: '자신의 이름을 입력해주세요.' }}
               />
               {errors.name && <Alert message={errors.name.message} type="warning" showIcon />}
@@ -160,7 +167,12 @@ function ContactPage() {
                 control={control}
                 name="email"
                 render={(p) => (
-                  <Input placeholder="Please input your email address" type="email" {...p} />
+                  <Input
+                    disabled={isSendingEmail}
+                    placeholder="Please input your email address"
+                    type="email"
+                    {...p}
+                  />
                 )}
                 rules={{
                   required: '자신의 이메일 주소를 입력해주세요.',
@@ -181,6 +193,7 @@ function ContactPage() {
                 render={(p) => (
                   <Input.TextArea
                     autoSize={{ minRows: 10 }}
+                    disabled={isSendingEmail}
                     placeholder="Please input email content"
                     {...p}
                   />
