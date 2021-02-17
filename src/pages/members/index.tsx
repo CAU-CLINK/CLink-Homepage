@@ -13,11 +13,11 @@ const members = [
     info2: 'Research',
     info3: 'Education',
     image: './person2.png',
-    address: {
-      github: 'https://github.com/CAU-CLINK',
-      facebook: 'https://www.facebook.com/CAUCLink',
-      instagram: 'https://www.instagram.com',
-    },
+    snsList: [
+      { id: 0, name: 'github', address: 'https://github.com/CAU-CLINK' },
+      { id: 1, name: 'facebook', address: 'https://www.facebook.com/CAUCLink' },
+      { id: 2, name: 'instagram', address: 'https://www.instagram.com' },
+    ],
     histories: [
       {
         id: 0,
@@ -48,11 +48,10 @@ const members = [
     info2: 'Research',
     info3: 'Education',
     image: './person1.png',
-    address: {
-      github: 'https://github.com/CAU-CLINK',
-      facebook: 'https://www.facebook.com/CAUCLink',
-      instagram: '',
-    },
+    snsList: [
+      { id: 1, name: 'facebook', address: 'https://www.facebook.com/CAUCLink' },
+      { id: 2, name: 'instagram', address: 'https://www.instagram.com' },
+    ],
     histories: [
       {
         id: 0,
@@ -83,11 +82,10 @@ const members = [
     info2: 'Research',
     info3: 'Education',
     image: './person2.png',
-    address: {
-      github: '',
-      facebook: 'https://www.facebook.com/CAUCLink',
-      instagram: 'https://www.instagram.com',
-    },
+    snsList: [
+      { id: 0, name: 'github', address: 'https://github.com/CAU-CLINK' },
+      { id: 2, name: 'instagram', address: 'https://www.instagram.com' },
+    ],
     histories: [
       {
         id: 0,
@@ -118,11 +116,10 @@ const members = [
     info2: 'Research',
     info3: 'Education',
     image: './person1.png',
-    address: {
-      github: 'https://github.com/CAU-CLINK',
-      facebook: '',
-      instagram: 'https://www.instagram.com',
-    },
+    snsList: [
+      { id: 0, name: 'github', address: 'https://github.com/CAU-CLINK' },
+      { id: 1, name: 'facebook', address: 'https://www.facebook.com/CAUCLink' },
+    ],
     histories: [
       {
         id: 0,
@@ -153,11 +150,7 @@ const members = [
     info2: 'Research',
     info3: 'Education',
     image: './person2.png',
-    address: {
-      github: 'https://github.com/CAU-CLINK',
-      facebook: '',
-      instagram: '',
-    },
+    snsList: [{ id: 0, name: 'github', address: 'https://github.com/CAU-CLINK' }],
     histories: [
       {
         id: 0,
@@ -188,11 +181,7 @@ const members = [
     info2: 'Research',
     info3: 'Education',
     image: './person1.png',
-    address: {
-      github: '',
-      facebook: 'https://www.facebook.com/CAUCLink',
-      instagram: '',
-    },
+    snsList: [{ id: 1, name: 'facebook', address: 'https://www.facebook.com/CAUCLink' }],
     histories: [
       {
         id: 0,
@@ -309,6 +298,19 @@ const HistoryContents = styled.h5`
   font-family: poppin;
 `
 
+function getSNSIconPathFromSNSName(name: string) {
+  switch (name) {
+    case 'facebook':
+      return '/facebook.png'
+    case 'instagram':
+      return '/instagram.png'
+    case 'github':
+      return '/github.png'
+    default:
+      return ''
+  }
+}
+
 function MemberPage() {
   return (
     <PageTitle title="중앙대학교 블록체인 학회 C-Link - Members">
@@ -324,30 +326,13 @@ function MemberPage() {
 
               <FlexContainerColumn>
                 <FlexContainer>
-                  {Object.entries(person.address)
-                    .filter((item) => item[1] !== '')
-                    .map((item) => item[0])
-                    .map((flatform) =>
-                      flatform === 'facebook' ? (
-                        <Link href={person.address.facebook} key={person.address.facebook}>
-                          <a href={person.address.facebook} target="_blank" rel="noreferrer">
-                            <IconImage src="./Facebook.png" />
-                          </a>
-                        </Link>
-                      ) : flatform === 'github' ? (
-                        <Link href={person.address.github} key={person.address.github}>
-                          <a href={person.address.github} target="_blank" rel="noreferrer">
-                            <IconImage src="./Github.png" />
-                          </a>
-                        </Link>
-                      ) : (
-                        <Link href={person.address.instagram} key={person.address.instagram}>
-                          <a href={person.address.instagram} target="_blank" rel="noreferrer">
-                            <IconImage src="./Instagram.png" />
-                          </a>
-                        </Link>
-                      )
-                    )}
+                  {person.snsList.map((sns) => (
+                    <Link href={sns.address} key={sns.id}>
+                      <a href={sns.address} target="_blank" rel="noreferrer">
+                        <IconImage src={getSNSIconPathFromSNSName(sns.name)} />
+                      </a>
+                    </Link>
+                  ))}
                 </FlexContainer>
                 <HistoryContainer>
                   {person.histories
