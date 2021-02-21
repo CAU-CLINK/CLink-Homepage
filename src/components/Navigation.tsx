@@ -4,11 +4,11 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import useBoolean from 'src/hooks/useBoolean'
 
-const StyledNavigation = styled.nav`
+const Margin = styled.nav`
   margin: 1rem;
 `
 
-const Padding = styled.div`
+const Padding = styled.nav`
   height: min-content;
   padding: 5rem 0 0 0;
   text-align: right;
@@ -26,7 +26,7 @@ function Navigation() {
   const [isDrawerOpen, , showDrawer, hideDrawer] = useBoolean(false)
 
   return (
-    <StyledNavigation>
+    <Margin>
       <Hamburger toggled={isDrawerOpen} toggle={showDrawer} />
       <Drawer
         closeIcon={<Hamburger toggled={isDrawerOpen} />}
@@ -58,7 +58,7 @@ function Navigation() {
           </Link>
         </Padding>
       </Drawer>
-    </StyledNavigation>
+    </Margin>
   )
 }
 

@@ -1,11 +1,11 @@
 import { SendOutlined } from '@ant-design/icons'
 import { message, Alert, Input, Button } from 'antd'
 import emailjs from 'emailjs-com'
+import { useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import PageLayout from 'src/components/layouts/PageLayout'
 import PageTitle from 'src/components/layouts/PageTitle'
 import styled from 'styled-components'
-import { Controller, useForm } from 'react-hook-form'
-import { BaseSyntheticEvent, useState } from 'react'
 import { MOBILE_MIN_WIDTH, TABLET_MIN_WIDTH } from 'src/models/constants'
 import { CenterAlignedH1 } from '../members'
 
