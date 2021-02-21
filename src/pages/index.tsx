@@ -1,20 +1,19 @@
 import GradientBorder from 'src/components/atoms/GradientBorder'
 import ImageBox from 'src/components/atoms/ImageBox'
-import InternationalizedLink from 'src/components/InternationalizedLink'
 import PageLayout from 'src/components/layouts/PageLayout'
 import ProjectContentBox from 'src/components/atoms/ProjectContentBox'
 import PageTitle from 'src/components/layouts/PageTitle'
+import HeroImage from 'src/components/HeroImage'
+import Members from 'src/components/Members'
+import { DESKTOP_MIN_WIDTH } from 'src/models/constants'
 import styled from 'styled-components'
-import MainLogo from 'src/components/MainLogo'
-
-import People from 'src/components/people'
 
 const Title = styled.h2`
   margin: 1rem 0;
 `
 
 const ExampleParagraph = (
-  <p>
+  <div>
     <div>"Lorem ipsum dolor sit amet,</div>
     <div>
       consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -30,7 +29,7 @@ const ExampleParagraph = (
     </div>
     <div>Excepteur sint occaecat cupidatat non proident,</div>
     <div>sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
-  </p>
+  </div>
 )
 
 interface Information {
@@ -88,46 +87,61 @@ const Projects: Information[] = [
   },
 ]
 
-const Container = styled.div`
+const GridContainer = styled.div`
+  width: 100%;
+  max-width: ${DESKTOP_MIN_WIDTH};
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   justify-items: center;
+  gap: 5rem;
+`
+
+const FlexContainer = styled.div`
+  padding: 0 1rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10rem;
 `
 
 function HomePage() {
   return (
-    <PageTitle title="중앙대학교 블록체인 학회 C-Link">
+    <PageTitle title="중앙대학교 블록체인 학회 C-Link - Home">
       <PageLayout>
-        <InternationalizedLink />
-        <MainLogo></MainLogo>
+        <FlexContainer>
+          <HeroImage />
 
-        <Container>
-          {Projects.map((project) => (
-            <ProjectContentBox project={project} key={project.id}></ProjectContentBox>
-          ))}
-        </Container>
-        <ImageBox>
-          <GradientBorder borderSize="1rem">
-            <img
-              src="https://media.vlpt.us/images/gwak2837/profile/fe9e991c-0c0c-44b2-8027-af0c6e29f4ba/filename2.jpg?w=120"
-              alt="imaeg"
-            />
-          </GradientBorder>
-          <Title>[2ND WORKSHOP, 2019]</Title>
-          {ExampleParagraph}
-        </ImageBox>
-        <ImageBox rightImage>
-          <GradientBorder borderSize="1rem">
-            <img
-              src="https://media.vlpt.us/images/gwak2837/profile/fe9e991c-0c0c-44b2-8027-af0c6e29f4ba/filename2.jpg?w=120"
-              alt="imaeg"
-            />
-          </GradientBorder>
-          <Title>[2ND WORKSHOP, 2019]</Title>
-          {ExampleParagraph}
-        </ImageBox>
+          <GridContainer>
+            {Projects.map((project) => (
+              <ProjectContentBox project={project} key={project.id}></ProjectContentBox>
+            ))}
+          </GridContainer>
 
-        <People />
+          <ImageBox>
+            <GradientBorder borderSize="1rem">
+              <img
+                src="https://media.vlpt.us/images/gwak2837/profile/fe9e991c-0c0c-44b2-8027-af0c6e29f4ba/filename2.jpg?w=120"
+                alt="imaeg"
+              />
+            </GradientBorder>
+            <Title>[2ND WORKSHOP, 2019]</Title>
+            {ExampleParagraph}
+          </ImageBox>
+          <ImageBox rightImage>
+            <GradientBorder borderSize="1rem">
+              <img
+                src="https://media.vlpt.us/images/gwak2837/profile/fe9e991c-0c0c-44b2-8027-af0c6e29f4ba/filename2.jpg?w=120"
+                alt="imaeg"
+              />
+            </GradientBorder>
+            <Title>[2ND WORKSHOP, 2019]</Title>
+            {ExampleParagraph}
+          </ImageBox>
+
+          <Members />
+        </FlexContainer>
       </PageLayout>
     </PageTitle>
   )

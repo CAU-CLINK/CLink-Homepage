@@ -81,10 +81,10 @@ const BigContainer = styled.div`
   align-items: center;
   max-width: 900px;
   margin-top: 3rem;
-  @media (max-width: 600px) {
+  /* @media (max-width: 600px) {
     width: 100%;
     flex-direction: column;
-  }
+  } */
 `
 
 const More = styled.a`
@@ -153,12 +153,12 @@ const BlockInfo = styled.h5`
   margin-bottom: 0.1px;
 `
 
-function People() {
+function Members() {
   return (
     <BigContainer>
       <MoreText>
-        <Link href="/team">
-          <More>MORE &rarr;</More>
+        <Link href="/members">
+          <More href="/members">MORE &rarr;</More>
         </Link>
       </MoreText>
       <GridContainer>
@@ -175,10 +175,9 @@ function People() {
             </PersonalBox>
           </Link>
         ))}
-        )
       </GridContainer>
     </BigContainer>
   )
 }
 
-export default People
+export default Members
