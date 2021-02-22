@@ -98,61 +98,6 @@ const MoreText = styled.h6`
   text-align: right;
 `
 
-const GridContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 900px;
-  margin-top: 1rem;
-
-  @media (max-width: 600px) {
-    width: 100%;
-    flex-direction: column;
-  }
-`
-
-const PersonalBox = styled.div`
-  width: 300px;
-  height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 3rem;
-
-  &:hover {
-    background-color: #f7f7f7;
-  }
-`
-
-const ImageBox = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: lightblue;
-`
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`
-
-const BlockName = styled.h3`
-  text-decoration: underline;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 10px;
-`
-
-const BlockInfo = styled.h5`
-  font-weight: bold;
-  margin-top: 0.1px;
-  margin-bottom: 0.1px;
-`
-
 function Members() {
   return (
     <BigContainer>
@@ -161,21 +106,6 @@ function Members() {
           <More href="/members">MORE &rarr;</More>
         </Link>
       </MoreText>
-      <GridContainer>
-        {data.map((person) => (
-          <Link href={person.address} key={person.id}>
-            <PersonalBox>
-              <ImageBox>
-                <Image src={person.image} />
-              </ImageBox>
-              <BlockName>{person.name}</BlockName>
-              <BlockInfo>{person.info1}</BlockInfo>
-              <BlockInfo>{person.info2}</BlockInfo>
-              <BlockInfo>{person.info3}</BlockInfo>
-            </PersonalBox>
-          </Link>
-        ))}
-      </GridContainer>
     </BigContainer>
   )
 }
