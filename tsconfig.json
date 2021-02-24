@@ -65,6 +65,6 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "resolveJsonModule": true
   },
-  "exclude": [".git", ".next", "node_modules", "out", "public"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "src/**/*", "test/**/*"],
+  "exclude": ["node_modules"]
 }
