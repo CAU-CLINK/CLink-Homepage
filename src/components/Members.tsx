@@ -1,112 +1,123 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 
-const data = [
-  {
-    id: 0,
-    name: 'JAMES',
-    info1: 'Leader',
-    info2: 'Research',
-    info3: 'Education',
-    image: 'https://yceffort.kr/2020/10/profile.png',
-    address: 'https://www.facebook.com/CAUCLink',
-    github: '',
-    facebook: '',
-    notion: '',
-  },
-  {
-    id: 1,
-    name: 'MICHAEL',
-    info1: 'Leader',
-    info2: 'Research',
-    info3: 'Education',
-    image: './person1.png',
-    address: 'https://www.naver.com',
-    github: '',
-    facebook: '',
-    notion: '',
-  },
-  {
-    id: 2,
-    name: 'LILLY',
-    info1: 'Leader',
-    info2: 'Research',
-    info3: 'Education',
-    image: 'https://yceffort.kr/2020/10/profile.png',
-    address: 'https://www.naver.com',
-    github: '',
-    facebook: '',
-    notion: '',
-  },
-  {
-    id: 3,
-    name: 'JESSICA',
-    info1: 'Leader',
-    info2: 'Research',
-    info3: 'Education',
-    image: './person1.png',
-    address: 'https://www.naver.com',
-    github: '',
-    facebook: '',
-    notion: '',
-  },
-  {
-    id: 4,
-    name: 'PETER',
-    info1: 'Leader',
-    info2: 'Research',
-    info3: 'Education',
-    image: './person1.png',
-    address: 'https://www.naver.com',
-    github: '',
-    facebook: '',
-    notion: '',
-  },
-  {
-    id: 5,
-    name: 'JENNY',
-    info1: 'Leader',
-    info2: 'Research',
-    info3: 'Education',
-    image: './person1.png',
-    address: 'https://www.naver.com',
-    github: '',
-    facebook: '',
-    notion: '',
-  },
+const upperImageSize = [
+  { id: 'frist', size: '200px' },
+  { id: 'second', size: '180px' },
 ]
+const lowerImageSize = [
+  { id: 'trhid', size: '135px' },
+  { id: 'fourth', size: '220px' },
+  { id: 'fifth', size: '125px' },
+]
+const upperImageList = ['./person2.png', './person3.png']
+const lowerImageList = ['./person4.png', './person5.png', './person6.png']
 
-const BigContainer = styled.div`
+const FullContainer = styled.div`
   margin: 0px auto;
-  align-items: center;
-  max-width: 900px;
+  max-width: 100%;
+  width: 900px;
   margin-top: 3rem;
-  /* @media (max-width: 600px) {
+  margin-bottom: 10rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  @media (max-width: 700px) {
     width: 100%;
     flex-direction: column;
-  } */
+    margin-bottom: 0rem;
+  }
 `
 
-const More = styled.a`
+const ImageContainer = styled.div`
+  width: 500px;
+  max-width: 100%;
+  height: 400px;
+  align-content: center;
+`
+
+const UpperContainer = styled.div`
+  width: 400px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+`
+
+const LowerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`
+
+const Circle = styled.div`
+  border-radius: 50%;
+  overflow: hidden;
+`
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
+
+const TextContainer = styled.div`
+  width: 400px;
+  height: 400px;
+  min-width: 200px;
+  @media (max-width: 700px) {
+    width: 500px;
+  }
+`
+
+const MemberText = styled.h1`
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 3.5vw;
+  text-align: center;
+  line-height: 400px;
+  @media (max-width: 700px) {
+    font-size: 50px;
+    text-align: center;
+    line-height: 250px;
+  }
+`
+
+const MemberA = styled.a`
   color: black;
   &:hover {
     color: #0070f3;
   }
 `
 
-const MoreText = styled.h6`
-  text-align: right;
-`
-
 function Members() {
   return (
-    <BigContainer>
-      <MoreText>
-        <Link href="/members">
-          <More href="/members">MORE &rarr;</More>
-        </Link>
-      </MoreText>
-    </BigContainer>
+    <FullContainer>
+      <ImageContainer>
+        <UpperContainer>
+          {upperImageSize.map((current, index) => (
+            <Circle style={{ width: current.size, height: current.size }} key={current.id}>
+              <Image src={upperImageList[index]} />
+            </Circle>
+          ))}
+        </UpperContainer>
+        <LowerContainer>
+          {lowerImageSize.map((current, index) => (
+            <Circle style={{ width: current.size, height: current.size }} key={current.id}>
+              <Image src={lowerImageList[index]} />
+            </Circle>
+          ))}
+        </LowerContainer>
+      </ImageContainer>
+      <TextContainer>
+        <MemberText>
+          <Link href="/members">
+            <MemberA>MEMBERS &rarr;</MemberA>
+          </Link>
+        </MemberText>
+      </TextContainer>
+    </FullContainer>
   )
 }
 
