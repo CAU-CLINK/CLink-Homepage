@@ -2,5 +2,3 @@
 
 myNextApplication:
   component: "@sls-next/serverless-component@1.18.0"
-  inputs:
-    domain: "cauclink.com" # sub-domain defaults to www
