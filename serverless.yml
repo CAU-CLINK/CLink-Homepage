@@ -3,4 +3,6 @@
 myNextApplication:
   component: "@sls-next/serverless-component@1.18.0"
   inputs:
-    domain: "cauclink.com" # sub-domain defaults to www
+	  bucketName: '1hogj65i-v3bwqr'
+	  cloudfront:
+	    distributionId: E1A27EB0FX07YR
