@@ -32,9 +32,9 @@ jobs:
       - name: Serverless AWS authentication
         run: npx serverless --component=serverless-next config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
 
-    # - name: Download `.serverless` state from S3
-      #   run: aws s3 sync s3://bhall2001-serverless-state-bucket/your-site-name/prod/.serverless .serverless --delete
-
+     - name: Download `.serverless` state from S3
+        run: aws s3 sync .serverless s3://clink-homepage-serverless-state-bucket/cauclink.com/staging/.serverless --delete
+    
       - name: Deploy to AWS
         run: npx serverless
 
