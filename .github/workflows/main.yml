@@ -2,12 +2,12 @@
 name: CI
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 jobs:
- build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -34,7 +34,7 @@ jobs:
 
       # name: Download `.serverless` state from S3
       #  run: aws s3 sync .serverless s3://clink-homepage-serverless-state-bucket/cauclink.com/staging/.serverless --delete
-    
+
       - name: Deploy to AWS
         run: npx serverless
 

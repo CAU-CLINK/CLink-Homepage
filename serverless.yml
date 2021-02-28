@@ -1,4 +1,4 @@
 # serverless.yml
 
 myNextApplication:
-  component: "@sls-next/serverless-component@1.18.0"
+  component: '@sls-next/serverless-component@1.18.0'

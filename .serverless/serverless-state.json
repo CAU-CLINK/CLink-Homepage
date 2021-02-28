@@ -197,10 +197,7 @@
             "defaultLambda": "clink-homepage-lambda",
             "apiLambda": "clink-hoempage-lambda"
           },
-          "domain": [
-            "clink-homepage",
-            "cauclink.com"
-          ],
+          "domain": ["clink-homepage", "cauclink.com"],
           "runtime": {
             "defaultLambda": "nodejs12.x",
             "apiLambda": "nodejs12.x"
