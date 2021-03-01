@@ -6,7 +6,7 @@
   "license": "GPL-3.0-only",
   "repository": "https://github.com/CAU-CLINK/clink-homepage.git",
   "engines": {
-    "node": ">=14.15.4"
+    "node": ">=12.0.0"
   },
   "scripts": {
     "dev": "next dev",

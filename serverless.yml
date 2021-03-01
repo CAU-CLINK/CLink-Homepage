@@ -5,4 +5,4 @@ myNextApplication:
   inputs:
     domain: 'cauclink.com'
     runtime:
-      defaultLambda: 'nodejs15.x'
+      defaultLambda: 'nodejs12.x'
