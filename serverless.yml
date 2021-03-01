@@ -4,5 +4,3 @@ myNextApplication:
   component: '@sls-next/serverless-component@1.18.0'
   inputs:
     domain: 'cauclink.com'
-    runtime:
-      defaultLambda: 'nodejs12.x'
