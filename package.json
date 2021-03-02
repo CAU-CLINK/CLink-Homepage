@@ -13,7 +13,7 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "netlify-deploy": "next build && next export",
+    "vercel-deploy": "next build && next export",
     "format": "prettier . --write --ignore-path .gitignore",
     "lint": "eslint . --fix --ignore-path .gitignore",
     "type": "tsc --pretty",
