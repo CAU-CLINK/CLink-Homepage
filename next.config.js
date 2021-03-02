@@ -4,5 +4,4 @@ module.exports = {
     defaultLocale: 'ko',
   },
   reactStrictMode: true,
-  target: 'serverless',
 }

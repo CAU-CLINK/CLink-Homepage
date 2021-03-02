@@ -17,8 +17,7 @@
     "lint": "eslint . --fix --ignore-path .gitignore",
     "type": "tsc --pretty",
     "test": "jest",
-    "pre-push": "yarn format && yarn lint && yarn type",
-    "deploy": "serverless"
+    "pre-push": "yarn format && yarn lint && yarn type"
   },
   "dependencies": {
     "@ant-design/icons": "^4.5.0",
@@ -63,7 +62,7 @@
     "jest-watch-typeahead": "^0.6.1",
     "prettier": "^2.2.0",
     "serverless": "^2.15.0",
-    "typescript": "^4.1.5"
+    "typescript": "^4.2.2"
   },
   "browserslist": [
     "defaults",
